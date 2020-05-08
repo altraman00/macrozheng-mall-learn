@@ -32,7 +32,7 @@ public class Generator {
         myBatisGenerator.generate(null);
         //输出警告信息
         for (String warning : warnings) {
-            System.out.println(warning);
+            System.out.println("--->" + warning);
         }
     }
 }

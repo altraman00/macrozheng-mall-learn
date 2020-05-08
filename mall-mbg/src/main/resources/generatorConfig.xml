@@ -12,7 +12,7 @@
         <property name="javaFileEncoding" value="UTF-8"/>
 
         <!-- 使用自定义的扩展插件 -->
-        <!--<plugin type="com.macro.mall.DaoExtPlugin"></plugin>-->
+        <plugin type="com.macro.mall.DaoExtPlugin"></plugin>
 
         <!-- 为模型生成序列化方法-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>

@@ -44,7 +44,7 @@ public class DaoExtPlugin extends PluginAdapter {
     @Override
     public boolean validate(List<String> warnings) {
         daoTargetProject = context.getJavaClientGeneratorConfiguration().getTargetProject();
-        daoTargetProject = context.getJavaClientGeneratorConfiguration().getTargetPackage();
+        daoTargetPackage = context.getJavaClientGeneratorConfiguration().getTargetPackage();
         mapperTargetProject = context.getSqlMapGeneratorConfiguration().getTargetProject();
         mapperTargetPackage = context.getSqlMapGeneratorConfiguration().getTargetPackage();
         return true;

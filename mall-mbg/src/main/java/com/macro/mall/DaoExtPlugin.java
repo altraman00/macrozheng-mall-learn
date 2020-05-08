@@ -121,20 +121,14 @@ public class DaoExtPlugin extends PluginAdapter {
                 Document document = new Document(XmlConstants.MYBATIS3_MAPPER_PUBLIC_ID
                         , XmlConstants.MYBATIS3_MAPPER_SYSTEM_ID);
                 XmlElement root = new XmlElement("mapper");
-
 //                Utils.setAttribute(root,"namespace",nameSpace);
-
                 document.setRootElement(root);
                 //创建mapper扩展文件
                 GeneratedXmlFile gxf = new GeneratedXmlFile(document, fileName, mapperTargetPackage, mapperTargetProject, false, context.getXmlFormatter());
                 list.add(gxf);
             }
-
         });
-
-
         return list;
-
     }
 
 

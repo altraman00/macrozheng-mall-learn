@@ -7,6 +7,7 @@ import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.JavaVisibility;
+import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.XmlConstants;
@@ -121,7 +122,9 @@ public class DaoExtPlugin extends PluginAdapter {
                 Document document = new Document(XmlConstants.MYBATIS3_MAPPER_PUBLIC_ID
                         , XmlConstants.MYBATIS3_MAPPER_SYSTEM_ID);
                 XmlElement root = new XmlElement("mapper");
-//                Utils.setAttribute(root,"namespace",nameSpace);
+
+                Attribute attribute = new Attribute("namespace",nameSpace);
+                root.addAttribute(attribute);
                 document.setRootElement(root);
                 //创建mapper扩展文件
                 GeneratedXmlFile gxf = new GeneratedXmlFile(document, fileName, mapperTargetPackage, mapperTargetProject, false, context.getXmlFormatter());

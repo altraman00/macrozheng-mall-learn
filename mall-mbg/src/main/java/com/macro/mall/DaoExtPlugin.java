@@ -74,7 +74,7 @@ public class DaoExtPlugin extends PluginAdapter {
             String filePath = daoTargetPackage;
             String file = daoTargetProject + "." + filePath;
             String fileName = daoName + "MapperExt.java";
-            String supperFilePath = daoTargetPackage + "." + daoName + "MapperExt";
+            String supperFilePath = daoTargetPackage + "." + daoName + "Mapper";
 
             if (fileIsNotExists(file, fileName)) {
                 //定义一个接口
@@ -85,7 +85,8 @@ public class DaoExtPlugin extends PluginAdapter {
 
                 //设置接口的修饰符
                 face.setVisibility(JavaVisibility.PUBLIC);
-                face.addAnnotation(String.valueOf(properties.setProperty("annotation", "@Resource")));
+//                face.addAnnotation(String.valueOf(properties.setProperty("annotation", "@Resource")));
+                face.addAnnotation("@Resource");
 
                 //导包
                 face.addImportedType(new FullyQualifiedJavaType(properties.getProperty("import", "javax.annotation.Resource")));

@@ -2,8 +2,11 @@ package com.macro.mall.demo.controller;
 
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
+import com.macro.mall.dao.BiResumeMapper;
 import com.macro.mall.demo.dto.PmsBrandDto;
 import com.macro.mall.demo.service.DemoService;
+import com.macro.mall.mapper.BiResumeMapperExt;
+import com.macro.mall.model.BiResume;
 import com.macro.mall.model.PmsBrand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,8 +26,12 @@ import java.util.List;
 @Api(tags = "DemoController", description = "品牌管理示例接口")
 @Controller
 public class DemoController {
+
     @Autowired
     private DemoService demoService;
+
+    @Autowired
+    private BiResumeMapperExt biResumeMapperExt;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoController.class);
 
@@ -34,6 +41,20 @@ public class DemoController {
     public CommonResult<List<PmsBrand>> getBrandList() {
         return CommonResult.success(demoService.listAllBrand());
     }
+
+
+    @RequestMapping(value = "/resume", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult getResume(String id){
+        BiResume biResume = biResumeMapperExt.selectByPrimaryKey(id);
+        LOGGER.info("【biResume】:{}",biResume);
+        String jobSeekerName = biResume.getJobSeekerName();
+        List<BiResume> biResumes = biResumeMapperExt.selectByJobSeekerName(jobSeekerName);
+        LOGGER.info("【List<BiResume>】:{}",biResumes);
+        CommonResult commonResult = CommonResult.success(biResumes);
+        return commonResult;
+    }
+
 
     @ApiOperation(value = "添加品牌")
     @RequestMapping(value = "/brand/create", method = RequestMethod.POST)
